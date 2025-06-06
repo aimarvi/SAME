@@ -7,6 +7,9 @@ import torch
 from torchvision import models, transforms
 from tqdm import tqdm
 
+stim_root = './all_stim_gray'
+save_fname = 'gray_bg_features'
+
 # Load pretrained AlexNet
 alexnet = models.alexnet(pretrained=True)
 alexnet.eval()
@@ -43,7 +46,7 @@ for layer,ind in target_layers.items():
 
 
 for cat in tqdm(['same_label', 'same_image', 'different_label']):
-    stim_dir = os.path.join('./mnist_stim', cat) 
+    stim_dir = os.path.join(stim_root, cat) 
     all_features = {cat: []}
 
     for fname in sorted(os.listdir(stim_dir)):
@@ -70,5 +73,5 @@ for cat in tqdm(['same_label', 'same_image', 'different_label']):
     for h in handles:
         h.remove()
 
-with open('mnist_features.pkl', 'wb') as f:
+with open(f'./features/{save_fname}.pkl', 'wb') as f:
     pickle.dump(all_features, f)
