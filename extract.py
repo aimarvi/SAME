@@ -7,8 +7,8 @@ import torch
 from torchvision import models, transforms
 from tqdm import tqdm
 
-stim_root = './all_stim_gray'
-save_fname = 'gray_bg_features'
+stim_root = './mnist_stim'
+save_fname = 'mnist_features'
 
 # Load pretrained AlexNet
 alexnet = models.alexnet(pretrained=True)
