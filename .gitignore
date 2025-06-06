@@ -1,4 +1,7 @@
 # training images
 mnist/
 
+# features
+features/
+
 .DS*
