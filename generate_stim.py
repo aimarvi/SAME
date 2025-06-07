@@ -7,6 +7,14 @@ from PIL import Image
 
 from torchvision import datasets, transforms
 
+'''
+TODO:
+
+finish this script
+
+copy and adapt code in the .ipynb stimuli files
+'''
+
 # basic stimulus parameters
 canvas_size = 400
 canvas_color = (0, 0, 0) # black background

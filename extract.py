@@ -7,6 +7,12 @@ import torch
 from torchvision import models, transforms
 from tqdm import tqdm
 
+'''
+TODO:
+
+turn this into a function
+'''
+
 stim_root = './mnist_stim'
 save_fname = 'mnist_features'
 
