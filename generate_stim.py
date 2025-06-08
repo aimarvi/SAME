@@ -31,5 +31,14 @@ positions = {
     'bottom_right': (canvas_size - image_size - pad, canvas_size - image_size - pad)
 }
 
-def create_stimulus(, mode='same_image):
+def create_stimulus(img_paths, mode='same_image'):
+'''
+generates stimuli with two images on a black background. images can either be:
+    1. the same image
+    2. two exemplars of the same label
+    3. two exemplars of different labels
 
+args:
+    img_paths (dict): keys are each label/category. values are all image paths of that label
+    mode (str); one of {same_image, same_label, different_label}
+'''
