@@ -42,3 +42,24 @@ args:
     img_paths (dict): keys are each label/category. values are all image paths of that label
     mode (str); one of {same_image, same_label, different_label}
 '''
+    canvas = Image.new('RGB', (canvas_size, canvas_size), canvas_color)
+    categories = list(img_paths.keys())
+    
+    if mode == 'same_image':
+        cat = random.choice(categories)
+        img_path = random.choice(img_paths[cat])
+        img_paths = [img_path, img_path]
+    elif mode == 'same_label':
+
+    elif mode == 'different_label':
+
+    else:
+        raise ValueError(f'{mode} mode not supported!')
+    
+    imgs = [Image.open(p).resize((image_size, image_size)) for p in img_paths]
+    corners = random.sample(list(positions.values()), 2)
+
+    for img, pos in zip(imgs, corners):
+        canvas.paste(img, pos)
+    
+    return canvas
