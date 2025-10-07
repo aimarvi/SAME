@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 from PIL import Image
-from sklearn import svm, preprocessing, model_selection, metrics, pipeline
+from sklearn import svm, preprocessing, model_selection, metrics, pipeline, decomposition
 from tqdm import tqdm
 
 def stack_features(features, layer):
@@ -32,7 +32,9 @@ num_samples = act.shape[0]
 
 clf = pipeline.make_pipeline(
     preprocessing.StandardScaler(),
-    svm.LinearSVC(dual='auto', class_weight='balanced', max_iter=5000, random_state=0)
+    decomposition.PCA(n_components=256, whiten=True, random_state=0),
+    svm.LinearSVC(dual=True, C=0.25, tol=1e-3, max_iter=50000,
+              class_weight='balanced', random_state=0)
 )
 
 logo = model_selection.LeaveOneGroupOut()
